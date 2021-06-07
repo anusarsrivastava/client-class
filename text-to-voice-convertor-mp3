@@ -1,0 +1,29 @@
+import pyttsx3
+
+#Import Text File
+f = open("C:/Users/anusa/Desktop/my_code_ver_2.0/go/Tools/Text to Voice Convertor/text.txt", 'r+') #for opening file
+text = f.read() #for read
+text = text.split('\n')
+
+engine = pyttsx3.init()
+engine = pyttsx3.init("sapi5")
+
+#Set Rate of Voice
+rate = engine.getProperty('rate')
+engine.setProperty('rate', rate+50)
+
+#Set Rate of Volume (0-1)
+volume = engine.getProperty('volume')
+engine.setProperty('volume', volume-0.25)
+
+#Pass the Text
+engine.say(text)
+
+#Run the Server
+engine.runAndWait()
+
+engine.save_to_file("How do you do?", "C:/Users/anusa/Desktop/my_code_ver_2.0/go/Tools/Text to Voice Convertor/output.mp3")
+engine.runAndWait()
+
+#Reference File
+#https://pyttsx3.readthedocs.io/en/latest/engine.html
